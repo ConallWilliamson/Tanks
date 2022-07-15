@@ -1,0 +1,3 @@
+- add theta to the turret in the constructor (angle between the origin and the muzzle), then use the turret's theta as the bullet's theta
+- destroy bullets either on collision or if they travel too far. (Maybe have their collide method check for intersections with the canvas)
+- add tank movement (maybe use something similar to control class from car video)

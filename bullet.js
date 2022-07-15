@@ -1,12 +1,15 @@
 class Bullet {
-    constructor(turret, vel){
+    constructor(turret, speed){
         this.turret = turret;
         this.x = turret.muzzleX;
         this.y = turret.muzzleY;
+        this.theta = turret.theta;
+
         this.direction = turret.direction;
         this.origin = [turret.x, turret.y]
 
-        this.vel = vel;
+        this.speed = speed;
+        this.vel = createVector(this.direction[0] - this.origin[0], this.direction[1] - this.origin[1]).normalize();
     }
 
     draw(){
@@ -25,10 +28,13 @@ class Bullet {
       }
 
       move(){
-        let delX = this.direction[0] - this.origin[0];
-        let delY = this.direction[1] - this.origin[1];
-        let theta = atan2(delY, delX);
-        this.x = this.x + this.vel * this.origin[0] * cos(theta);
-        this.y = this.y + this.vel * this.origin[1] * sin(theta);
+        //this.theta = calculateTheta(this.origin[0], this.origin[1], this.x, this.y);
+        //this.x = this.x + this.vel * this.origin[0] * Math.cos(this.theta);
+        //this.y = this.y + this.vel * this.origin[1] * Math.sin(this.theta);
+        console.log(this.direction);
+        console.log(this.origin);
+        console.log(this.speed)
+        this.x += this.vel.x * this.speed;
+        this.y += this.vel.y * this.speed;
       }
 }

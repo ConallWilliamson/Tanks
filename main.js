@@ -1,5 +1,4 @@
-let turret = new Turret(400,400,100,"blue");
-
+let tank = new Tank(300,300,100,200);
 
 function setup(){
     createCanvas(windowWidth, windowHeight)
@@ -7,13 +6,13 @@ function setup(){
 
 function draw(){
     background(100);
-    turret.draw();
-    turret.update();
+    tank.draw();
+
 
 }
 
 function mousePressed(){
-    turret.fire();
+    tank.turret.fire();
 }
 
 
