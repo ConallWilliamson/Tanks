@@ -1,3 +1,15 @@
-- add theta to the turret in the constructor (angle between the origin and the muzzle), then use the turret's theta as the bullet's theta
+To do:
+- add theta to the turret in the constructor (angle between the origin and the muzzle), then use the turret's theta as the bullet's theta. Never update theta.
 - destroy bullets either on collision or if they travel too far. (Maybe have their collide method check for intersections with the canvas)
+- Add borders and breakable blocks
+- Decide what to do with enemy tanks. Probably have a generic tank with generic methods and then other tanks with specific behaviours. Probably pass
+  whether the tank is AI, neural net or human controlled via the constructor.
+
+
+
+
+
+Fixed:
 - add tank movement (maybe use something similar to control class from car video)
+- fix bug with bullet's move method. It appears to miss the mouseX and mouseY.
+- fix tank movement. The tank should slowly accelerate and then decelerate once the steering force is no longer applied.

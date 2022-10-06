@@ -28,12 +28,6 @@ class Bullet {
       }
 
       move(){
-        //this.theta = calculateTheta(this.origin[0], this.origin[1], this.x, this.y);
-        //this.x = this.x + this.vel * this.origin[0] * Math.cos(this.theta);
-        //this.y = this.y + this.vel * this.origin[1] * Math.sin(this.theta);
-        console.log(this.direction);
-        console.log(this.origin);
-        console.log(this.speed)
         this.x += this.vel.x * this.speed;
         this.y += this.vel.y * this.speed;
       }
