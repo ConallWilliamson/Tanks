@@ -1,5 +1,6 @@
 class Turret {
-    constructor(tank, colour) {
+    constructor(game,tank, colour) {
+        this.game = game;
         this.tank = tank;
         this.x = tank.pos.x + tank.width/2;
         this.y = tank.pos.y + tank.height/2;
@@ -15,14 +16,10 @@ class Turret {
         this.barrelLength = this.r *1.5;
         this.muzzleX =  this.x + this.barrelLength * cos(this.theta);
         this.muzzleY =  this.y + this.barrelLength * sin(this.theta);
-
-        
-
-        this.bullets = [];
       }
 
       fire(){
-        this.bullets.push(new Bullet(this, 20));
+        this.game.bullets.push(new Bullet(this, 20));
       }
 
       update(){
@@ -35,13 +32,6 @@ class Turret {
         this.theta = atan2(delY, delX);
         this.muzzleX =  this.x + this.barrelLength * cos(this.theta);
         this.muzzleY =  this.y + this.barrelLength * sin(this.theta);
-
-        if(this.bullets){
-            for(let bullet of this.bullets){
-                bullet.draw();
-                bullet.move();
-            }
-        }
       }
 
       draw() {

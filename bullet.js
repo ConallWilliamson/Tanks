@@ -3,6 +3,7 @@ class Bullet {
         this.turret = turret;
         this.x = turret.muzzleX;
         this.y = turret.muzzleY;
+        this.r = 10;
         this.theta = turret.theta;
 
         this.direction = turret.direction;
@@ -15,7 +16,7 @@ class Bullet {
     draw(){
         stroke("yellow");
         fill("yellow");
-        ellipse(this.x, this.y, 10);
+        ellipse(this.x, this.y, this.r);
     }
 
     //idea for homing bullet?
@@ -30,5 +31,9 @@ class Bullet {
       move(){
         this.x += this.vel.x * this.speed;
         this.y += this.vel.y * this.speed;
+      }
+
+      bounce(border){
+        this.vel.reflect(border)
       }
 }

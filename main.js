@@ -1,14 +1,13 @@
 let tank;
-let vehicle;
 let borders = [];
 
 function setup(){
     createCanvas(windowWidth, windowHeight);
-    tank = new Tank(windowWidth/2,windowHeight/2);
-    borders.push(new Border(0,0, windowWidth, 0));
-    borders.push(new Border(windowWidth, 0, windowWidth, windowHeight));
-    borders.push(new Border(windowWidth, windowHeight, 0, windowHeight));
-    borders.push(new Border(0, windowHeight,0,0));
+    //tank = new Tank(windowWidth/2,windowHeight/2);
+
+    game = new Game(windowWidth, windowHeight);
+    game.blocks.push(new Block(game, 100, 100 , 50, 50));
+    game.blocks.push(new Block(game, 100, 200 , 50, 50));
 }
 
 
@@ -24,15 +23,17 @@ function draw(){
     for(border of borders){
         border.show();
     }
-    tank.show();
-    tank.update();
+    game.draw();
+    game.update();
+    //tank.show();
+    //tank.update();
 
 
 
 }
 
 function mousePressed(){
-    tank.turret.fire();
+    game.tank.turret.fire();
 }
 
 

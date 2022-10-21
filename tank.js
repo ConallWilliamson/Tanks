@@ -1,6 +1,7 @@
 
 class Tank {
-  constructor(x, y) {
+  constructor(game, x, y) {
+    this.game = game;
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
@@ -15,9 +16,8 @@ class Tank {
     this.r = 16;
     this.width = 50;
     this.height = 50;
-    this.turret = new Turret(this, '#4b5320');
+    this.turret = new Turret(this.game, this, '#4b5320');
     this.controls = new Controls("KEYS");
-
   }
 
   seek(target) {
@@ -60,15 +60,15 @@ class Tank {
     if (this.vel.mag() != 0) {
       const flip = this.controls.reverse > 0 ?1:-1;
       if (this.controls.left) {
-        this.angle += 0.05 *flip;
-        this.steering.setHeading(this.angle - Math.PI);
+        this.angle += 0.05 * flip;
+        this.steering.setHeading(this.angle);
         this.steering.sub(this.vel);
         this.steering.setMag(this.maxSpeed);
         this.steering.limit(this.maxForce);
         this.applyForce(this.steering);
       }
       if (this.controls.right) {
-        this.angle -= 0.05 *flip;
+        this.angle -= 0.05 * flip;
         this.steering.setHeading(this.angle + Math.PI);
         this.steering.sub(this.vel);
         this.steering.setMag(this.maxSpeed);
@@ -99,7 +99,7 @@ class Tank {
     this.turret.update();
   }
 
-  show() {
+  draw() {
     stroke('#4b5320');
     strokeWeight(2);
     fill('#4b5320');
