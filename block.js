@@ -7,16 +7,28 @@ class Block {
       this.width = width;
       this.height = height;
       this.destroyed = false;
+      this.borders = [new Border(this.x, this.y, this.x + this.width, this.y),
+                      new Border(this.x + this.width, this.y, this.x + this.width, this.y + this.height), 
+                      new Border(this.x + this.width, this.y + this.height, this.x, this.y + this.height), 
+                      new Border(this.x, this.y + this.height, this.x, this.y), 
+                      ]
     }
   
     draw() {
       if(!this.destroyed){
-        stroke('black');
-        strokeWeight(2);
-        noFill();  
-        rect(this.x, this.y, this.width, this.height);
+        for(let border of this.borders){
+          border.show();
+        }
       }
-
     }
-  
+
+    checkCollision(circle){
+      for(let border of this.borders){
+        if(lineIntersectCircle(border, circle)){
+          this.destroyed = true;
+          circle.bounce(border);
+          break;
+        }
+      }
+    }
   }

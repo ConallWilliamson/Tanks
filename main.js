@@ -7,7 +7,7 @@ function setup(){
 
     game = new Game(windowWidth, windowHeight);
     game.blocks.push(new Block(game, 100, 100 , 50, 50));
-    game.blocks.push(new Block(game, 100, 200 , 50, 50));
+    game.blocks.push(new Block(game, 400, 200 , 50, 50));
 }
 
 

@@ -34,6 +34,7 @@ class Bullet {
       }
 
       bounce(border){
-        this.vel.reflect(border)
+        let norm = createVector(border.a.y - border.b.y, border.b.x - border.a.x)
+        this.vel.reflect(norm);
       }
 }

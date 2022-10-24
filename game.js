@@ -10,14 +10,11 @@ class Game{
     update(){
         this.tank.update();
 
-
         if(this.bullets || this.blocks){
             for(let bullet of this.bullets){
+            bullet.move();
                 for(let block of this.blocks){
-                    bullet.move();
-                    if(rectIntersectCircle(block, bullet)){
-                        block.destroyed = true;
-                    }
+                    block.checkCollision(bullet);
                 }
             }
         }
