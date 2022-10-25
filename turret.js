@@ -19,7 +19,7 @@ class Turret {
       }
 
       fire(){
-        this.game.bullets.push(new Bullet(this, 20));
+        this.game.bullets.push(new Bullet(this, 10));
       }
 
       update(){
@@ -38,13 +38,13 @@ class Turret {
         stroke(this.colour);
         strokeWeight(4);
         //fill(this.colour);
-        noFill();
+        //noFill();
         fill(this.brightness, 125)
         ellipse(this.x, this.y, this.r * 2);
         //draw barrel
         
         strokeWeight(6);
-        stroke(0);
+        stroke(this.colour);
 
         line(this.x, this.y, this.muzzleX,this.muzzleY);
         strokeWeight(2);

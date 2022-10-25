@@ -2,12 +2,12 @@ let tank;
 let borders = [];
 
 function setup(){
-    createCanvas(windowWidth, windowHeight);
+    
     //tank = new Tank(windowWidth/2,windowHeight/2);
 
     game = new Game(windowWidth, windowHeight);
-    game.blocks.push(new Block(game, 100, 100 , 50, 50));
-    game.blocks.push(new Block(game, 400, 200 , 50, 50));
+    createCanvas(game.width, game.height);
+    game.setup();
 }
 
 

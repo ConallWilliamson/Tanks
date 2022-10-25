@@ -5,6 +5,8 @@ class Bullet {
         this.y = turret.muzzleY;
         this.r = 10;
         this.theta = turret.theta;
+        this.bounceLimit = 3;
+        this.bounceCount = 0;
 
         this.direction = turret.direction;
         this.origin = [turret.x, turret.y]
@@ -36,5 +38,6 @@ class Bullet {
       bounce(border){
         let norm = createVector(border.a.y - border.b.y, border.b.x - border.a.x)
         this.vel.reflect(norm);
+        this.bounceCount++;
       }
 }
